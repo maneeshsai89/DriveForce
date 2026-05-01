@@ -1,0 +1,73 @@
+.state-wrap {
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+
+.table-wrap {
+    padding: 0 0.5rem 0.75rem;
+}
+
+.portal-list-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 0 0.25rem 0.75rem;
+}
+
+.portal-list-title {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #3e3e3c;
+}
+
+.portal-list-meta {
+    font-size: 0.8125rem;
+    color: #706e6b;
+}
+
+.portal-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0 0.25rem 0.75rem;
+}
+
+.portal-search {
+    flex: 1 1 12rem;
+    min-width: 8rem;
+}
+
+.portal-filter {
+    flex: 0 1 10rem;
+    min-width: 7rem;
+}
+
+.portal-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.75rem 0.25rem 0.25rem;
+    border-top: 1px solid #e5e5e5;
+    margin-top: 0.25rem;
+    font-size: 0.8125rem;
+    color: #706e6b;
+}
+
+.portal-footer-right {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.portal-page-label {
+    margin-right: 0.25rem;
+}
+
+.portal-page-btn {
+    --slds-c-button-neutral-color-background: #ffffff;
+}

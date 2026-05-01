@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WC_Electra_Auto_Check_At__c</fullName>
+    <description>WC — When Electra may auto-approve (set ~1 min after Slack approver notification). Cleared after decision or skip.</description>
+    <label>WC Electra Auto Check At</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>DateTime</type>
+</CustomField>

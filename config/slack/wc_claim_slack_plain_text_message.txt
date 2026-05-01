@@ -1,0 +1,16 @@
+New warranty claim — review required
+
+Claim: {{claimName}}
+Claim Id (use in Slack workflow / shortcut): {{claimId}}
+
+Dealer: {{dealerName}}
+VIN: {{vin}}
+Part: {{partCode}}
+Est. amount: {{estimatedAmount}}
+Risk: {{riskLabel}} (score {{riskScore}})
+
+AI summary:
+{{aiSummary}}
+
+---
+Approve or reject using your Slack Workflow (shortcut / form / emoji) mapped to Flow WC_Update_Claim_From_Slack_Decision — not via buttons in this message unless your org adds Block Kit support elsewhere.

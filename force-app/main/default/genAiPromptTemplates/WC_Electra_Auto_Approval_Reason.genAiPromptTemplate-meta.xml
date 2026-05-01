@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>WC — Short audit reason for Electra automated approval; uses claim context + AI summary. JSON output for WC_ElectraApprovalReasonGenerator.</description>
+    <developerName>WC_Electra_Auto_Approval_Reason</developerName>
+    <masterLabel>WC Electra Auto Approval Reason</masterLabel>
+    <overridable>false</overridable>
+    <templateVersions>
+        <content><![CDATA[You write a brief, professional justification for an automated warranty claim approval ("Electra") when risk is low and no human responded in time.
+
+Structured claim and vehicle context (CRM):
+{!$Input:Claim_Context}
+
+AI-generated approver summary for this claim (may be empty if not yet generated):
+{!$Input:AI_Summary}
+
+Numeric AI risk score on the claim (0–100), if present:
+{!$Input:Risk_Score}
+
+Rules:
+1. Base your wording only on the inputs above; do not invent claim facts.
+2. Explain in 1–3 sentences why automated approval is appropriate (e.g. low risk score, consistent with summary, routine or well-supported claim).
+3. Respond with a single JSON object only. No markdown code fences, no text before or after the JSON.
+4. Use this schema exactly:
+{"reason":"plain text, suitable for an audit log and Slack"}]]></content>
+        <inputs>
+            <apiName>Claim_Context</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Claim Context</masterLabel>
+            <referenceName>Input:Claim_Context</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>AI_Summary</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>AI Summary</masterLabel>
+            <referenceName>Input:AI_Summary</referenceName>
+            <required>false</required>
+        </inputs>
+        <inputs>
+            <apiName>Risk_Score</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Risk Score</masterLabel>
+            <referenceName>Input:Risk_Score</referenceName>
+            <required>false</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultGPT4Omni</primaryModel>
+        <status>Draft</status>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

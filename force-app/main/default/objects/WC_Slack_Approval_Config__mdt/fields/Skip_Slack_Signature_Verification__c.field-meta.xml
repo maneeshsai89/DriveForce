@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Skip_Slack_Signature_Verification__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>When true, X-Slack-Signature is not verified. Use only in sandbox when RestRequest.requestBody is empty and reconstructed bodies never match Slack’s HMAC. NEVER enable in production — anyone could POST to your endpoint.</description>
+    <externalId>false</externalId>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <label>Skip Slack Signature Verification</label>
+    <type>Checkbox</type>
+</CustomField>

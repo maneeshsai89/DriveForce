@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" role="img" aria-labelledby="title desc">
+  <title id="title">Claim insight illustration</title>
+  <desc id="desc">Service advisor reviewing a vehicle claim report.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7fbff"/>
+      <stop offset="100%" stop-color="#e7f0ff"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#eff4fb"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="520" height="300" rx="20" fill="url(#bg)"/>
+  <rect x="36" y="36" width="448" height="228" rx="16" fill="url(#panel)" stroke="#cddff5"/>
+
+  <g transform="translate(64 58)">
+    <rect x="0" y="0" width="190" height="174" rx="12" fill="#ffffff" stroke="#b6d2f2"/>
+    <rect x="18" y="22" width="96" height="12" rx="6" fill="#3b91ff"/>
+    <rect x="18" y="46" width="154" height="8" rx="4" fill="#d3e2f3"/>
+    <rect x="18" y="62" width="142" height="8" rx="4" fill="#d3e2f3"/>
+    <rect x="18" y="78" width="126" height="8" rx="4" fill="#d3e2f3"/>
+    <rect x="18" y="108" width="40" height="40" rx="8" fill="#cdefc4"/>
+    <path d="M31 129l9 9 17-20" fill="none" stroke="#2e844a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="70" y="116" width="92" height="8" rx="4" fill="#d3e2f3"/>
+    <rect x="70" y="132" width="76" height="8" rx="4" fill="#d3e2f3"/>
+  </g>
+
+  <g transform="translate(285 74)">
+    <ellipse cx="76" cy="174" rx="82" ry="20" fill="#dbe9f8"/>
+    <rect x="37" y="62" width="70" height="84" rx="14" fill="#1f7ccf"/>
+    <circle cx="72" cy="43" r="26" fill="#ffd9b3"/>
+    <rect x="47" y="24" width="50" height="22" rx="11" fill="#1c3f68"/>
+    <rect x="8" y="78" width="44" height="13" rx="6.5" fill="#1f7ccf"/>
+    <rect x="95" y="78" width="44" height="13" rx="6.5" fill="#1f7ccf"/>
+    <rect x="104" y="88" width="50" height="70" rx="10" fill="#ffffff" stroke="#a6c7eb"/>
+    <rect x="114" y="103" width="30" height="5" rx="2.5" fill="#9fc3e8"/>
+    <rect x="114" y="115" width="30" height="5" rx="2.5" fill="#9fc3e8"/>
+    <rect x="114" y="127" width="20" height="5" rx="2.5" fill="#9fc3e8"/>
+  </g>
+</svg>

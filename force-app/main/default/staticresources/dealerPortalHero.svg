@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 420" role="img" aria-labelledby="title desc">
+  <title id="title">Dealer portal hero illustration</title>
+  <desc id="desc">A modern dealership building with service cars.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#dff1ff"/>
+      <stop offset="100%" stop-color="#f3f9ff"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d0e9ff"/>
+      <stop offset="100%" stop-color="#a7d2ff"/>
+    </linearGradient>
+    <linearGradient id="carBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f7ccf"/>
+      <stop offset="100%" stop-color="#0f4a86"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="860" height="420" fill="url(#sky)"/>
+  <rect x="0" y="302" width="860" height="118" fill="#e7eff7"/>
+  <rect x="120" y="94" width="620" height="230" rx="18" fill="#ffffff" stroke="#b5d7f6" stroke-width="4"/>
+  <rect x="156" y="126" width="548" height="128" rx="10" fill="url(#glass)"/>
+  <rect x="176" y="138" width="158" height="102" rx="8" fill="#ebf6ff"/>
+  <rect x="350" y="138" width="158" height="102" rx="8" fill="#ebf6ff"/>
+  <rect x="524" y="138" width="158" height="102" rx="8" fill="#ebf6ff"/>
+  <rect x="350" y="258" width="160" height="54" rx="6" fill="#12477d"/>
+  <text x="430" y="292" text-anchor="middle" font-size="26" font-family="Arial, sans-serif" fill="#ffffff" font-weight="700">DEALER</text>
+
+  <g transform="translate(188 258)">
+    <rect x="0" y="24" width="176" height="42" rx="16" fill="url(#carBody)"/>
+    <rect x="34" y="4" width="95" height="30" rx="10" fill="#9bc9f6"/>
+    <circle cx="42" cy="70" r="15" fill="#1a2d44"/>
+    <circle cx="132" cy="70" r="15" fill="#1a2d44"/>
+    <circle cx="42" cy="70" r="7" fill="#f2f6fb"/>
+    <circle cx="132" cy="70" r="7" fill="#f2f6fb"/>
+  </g>
+
+  <g transform="translate(474 262)">
+    <rect x="0" y="18" width="160" height="40" rx="15" fill="#36a66f"/>
+    <rect x="28" y="0" width="88" height="28" rx="10" fill="#b9efd1"/>
+    <circle cx="38" cy="63" r="13" fill="#1a2d44"/>
+    <circle cx="121" cy="63" r="13" fill="#1a2d44"/>
+    <circle cx="38" cy="63" r="6" fill="#f2f6fb"/>
+    <circle cx="121" cy="63" r="6" fill="#f2f6fb"/>
+  </g>
+</svg>

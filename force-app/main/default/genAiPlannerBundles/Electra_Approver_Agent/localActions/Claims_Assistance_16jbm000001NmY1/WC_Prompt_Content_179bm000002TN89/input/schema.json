@@ -1,0 +1,14 @@
+{
+  "required" : [ "Claim_Id" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Claim_Id" : {
+      "title" : "Claim_Id",
+      "description" : "Salesforce 18-digit id of the claim. Take it from parent thread on slack if not available then ask the user to provide",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

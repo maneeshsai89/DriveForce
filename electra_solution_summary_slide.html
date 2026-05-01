@@ -1,0 +1,220 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);}
+body{font-family:var(--font-sans);}
+.slide{padding:1.5rem 0 0.5rem;}
+.slide-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:1.25rem;}
+.slide-title{font-size:20px;font-weight:500;color:var(--color-text-primary);line-height:1.2;}
+.slide-sub{font-size:13px;color:var(--color-text-secondary);margin-top:4px;}
+.logo-pill{display:flex;align-items:center;gap:6px;background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:99px;padding:5px 12px;flex-shrink:0;}
+.logo-dot{width:10px;height:10px;border-radius:50%;background:#0070d2;}
+.logo-txt{font-size:11px;font-weight:500;color:var(--color-text-secondary);}
+
+.metrics-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:1.25rem;}
+.metric-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:12px 14px;}
+.metric-before{font-size:11px;color:var(--color-text-danger);margin:0 0 2px;text-decoration:line-through;}
+.metric-after{font-size:22px;font-weight:500;color:var(--color-text-success);margin:0;}
+.metric-lbl{font-size:11px;color:var(--color-text-secondary);margin:3px 0 0;}
+
+.req-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-bottom:1.25rem;}
+.req-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:12px;display:flex;flex-direction:column;gap:6px;}
+.req-num-badge{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;}
+.req-card-title{font-size:12px;font-weight:500;color:var(--color-text-primary);line-height:1.3;}
+.req-card-desc{font-size:11px;color:var(--color-text-secondary);line-height:1.4;flex:1;}
+.req-pill{font-size:10px;font-weight:500;padding:2px 7px;border-radius:99px;align-self:flex-start;}
+
+.stack-section{margin-bottom:1.25rem;}
+.stack-label{font-size:11px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;}
+.stack-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+.stack-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:10px 12px;}
+.stack-card-title{font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:5px;}
+.stack-items{display:flex;flex-direction:column;gap:3px;}
+.stack-item{font-size:11px;color:var(--color-text-secondary);display:flex;align-items:baseline;gap:5px;}
+.stack-item::before{content:'';width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:1px;}
+.si-purple::before{background:#7f77dd;}
+.si-blue::before{background:#0070d2;}
+.si-teal::before{background:#1d9e75;}
+.si-amber::before{background:#ba7517;}
+.si-green::before{background:#639922;}
+
+.journey-row{display:flex;align-items:center;gap:0;margin-bottom:1.25rem;overflow:hidden;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);}
+.journey-step{flex:1;padding:10px 8px;text-align:center;border-right:0.5px solid var(--color-border-tertiary);cursor:pointer;}
+.journey-step:last-child{border-right:none;}
+.journey-step:hover{background:var(--color-background-secondary);}
+.js-icon{font-size:14px;margin-bottom:3px;}
+.js-title{font-size:11px;font-weight:500;color:var(--color-text-primary);line-height:1.2;}
+.js-sub{font-size:10px;color:var(--color-text-secondary);margin-top:2px;}
+.js-tag{display:inline-block;font-size:9px;font-weight:500;padding:1px 5px;border-radius:3px;margin-top:4px;}
+
+.footer-row{display:flex;align-items:center;justify-content:space-between;padding-top:10px;border-top:0.5px solid var(--color-border-tertiary);}
+.footer-claim{font-size:12px;color:var(--color-text-secondary);}
+.footer-stat{font-size:12px;font-weight:500;color:var(--color-text-success);}
+.explore-btn{font-size:12px;padding:7px 16px;cursor:pointer;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:transparent;color:var(--color-text-secondary);margin-top:12px;width:100%;}
+.explore-btn:hover{background:var(--color-background-secondary);}
+</style>
+
+<h2 class="sr-only">Full solution summary: Electra Cars Warranty Claim Agent — 5 requirements, Salesforce components, and before vs after metrics</h2>
+
+<div class="slide">
+
+  <div class="slide-header">
+    <div>
+      <div class="slide-title">Electra Cars — Warranty Claim Agent</div>
+      <div class="slide-sub">Agentforce · Automotive Cloud · Data Cloud · Digital Engagement · Slack</div>
+    </div>
+    <div class="logo-pill">
+      <div class="logo-dot"></div>
+      <span class="logo-txt">Salesforce native</span>
+    </div>
+  </div>
+
+  <div class="metrics-row">
+    <div class="metric-card">
+      <p class="metric-before">2–5 days</p>
+      <p class="metric-after">~3 min</p>
+      <p class="metric-lbl">Submission to approval</p>
+    </div>
+    <div class="metric-card">
+      <p class="metric-before">9 manual fields</p>
+      <p class="metric-after">4 asked</p>
+      <p class="metric-lbl">Dealer inputs per claim</p>
+    </div>
+    <div class="metric-card">
+      <p class="metric-before">15–20 min review</p>
+      <p class="metric-after">&lt;30 sec</p>
+      <p class="metric-lbl">Approver decision time</p>
+    </div>
+    <div class="metric-card">
+      <p class="metric-before">1,000+ emails/day</p>
+      <p class="metric-after">0 emails</p>
+      <p class="metric-lbl">Manual claim intake</p>
+    </div>
+  </div>
+
+  <div class="req-grid">
+    <div class="req-card">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div class="req-num-badge" style="background:#EEEDFE;color:#3C3489;">1</div>
+        <span class="req-pill" style="background:#EEEDFE;color:#3C3489;">Digitize the claim</span>
+      </div>
+      <div class="req-card-title">Structured digital record from day one</div>
+      <div class="req-card-desc">Automotive Cloud Warranty_Claim__c replaces unstructured email. Every field typed, auto-filled, or AI-suggested — fully structured on create.</div>
+      <span class="req-pill" style="background:#e3f0fc;color:#0070d2;">Automotive Cloud</span>
+    </div>
+    <div class="req-card">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div class="req-num-badge" style="background:#E1F5EE;color:#085041;">2</div>
+        <span class="req-pill" style="background:#E1F5EE;color:#085041;">AI-assisted entry</span>
+      </div>
+      <div class="req-card-title">WhatsApp &amp; web — conversational intake</div>
+      <div class="req-card-desc">Agentforce Service Agent extracts VIN, fault, part, and labour from natural language. 5 of 9 fields pre-filled from Automotive Cloud. No forms.</div>
+      <span class="req-pill" style="background:#EEEDFE;color:#3C3489;">Agentforce + Digital Engagement</span>
+    </div>
+    <div class="req-card">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div class="req-num-badge" style="background:#FAEEDA;color:#633806;">3</div>
+        <span class="req-pill" style="background:#FAEEDA;color:#633806;">Instant notification</span>
+      </div>
+      <div class="req-card-title">Approver alerted in &lt;5 seconds</div>
+      <div class="req-card-desc">Platform Event fires on record create. Einstein for Slack posts a rich AI-summarised card to #warranty-approvals before the dealer puts down their phone.</div>
+      <span class="req-pill" style="background:#FAEEDA;color:#633806;">Platform Events + Slack</span>
+    </div>
+    <div class="req-card">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div class="req-num-badge" style="background:#E6F1FB;color:#0C447C;">4</div>
+        <span class="req-pill" style="background:#E6F1FB;color:#0C447C;">Intelligent assistant</span>
+      </div>
+      <div class="req-card-title">AI answers follow-up questions with cited evidence</div>
+      <div class="req-card-desc">Approver asks natural language questions in Slack. Agentforce reasons across Data Cloud, claim history, and warranty policy — returning sourced answers in seconds.</div>
+      <span class="req-pill" style="background:#E1F5EE;color:#085041;">Agentforce + Data Cloud</span>
+    </div>
+    <div class="req-card">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div class="req-num-badge" style="background:#EAF3DE;color:#27500A;">5</div>
+        <span class="req-pill" style="background:#EAF3DE;color:#27500A;">Slack approval</span>
+      </div>
+      <div class="req-card-title">Approve, reject, or follow up in one click</div>
+      <div class="req-card-desc">Slack action triggers Salesforce Flow — updates claim status, stamps approver identity, and fires WhatsApp notification to dealer. Zero tab-switching.</div>
+      <span class="req-pill" style="background:#e3f0fc;color:#0070d2;">Slack Agent + Flow</span>
+    </div>
+  </div>
+
+  <div class="stack-section">
+    <div class="stack-label">Salesforce components used</div>
+    <div class="stack-grid">
+      <div class="stack-card">
+        <div class="stack-card-title">Agentforce</div>
+        <div class="stack-items">
+          <span class="stack-item si-purple">Service Agent (WhatsApp / web intake)</span>
+          <span class="stack-item si-purple">Approver Assistant Agent (Slack Q&amp;A)</span>
+          <span class="stack-item si-purple">Atlas Reasoning Engine (part matching)</span>
+          <span class="stack-item si-purple">Agent Actions (Apex + Flow invocable)</span>
+          <span class="stack-item si-purple">Einstein Data Library (policy knowledge)</span>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-card-title">Automotive Cloud &amp; Data Cloud</div>
+        <div class="stack-items">
+          <span class="stack-item si-blue">Warranty_Claim__c (structured record)</span>
+          <span class="stack-item si-blue">Vehicle__c + Warranty__c (auto-fill source)</span>
+          <span class="stack-item si-teal">Data Cloud unified vehicle profile</span>
+          <span class="stack-item si-teal">Claim history &amp; telematic signals</span>
+          <span class="stack-item si-teal">Fraud &amp; anomaly segmentation</span>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-card-title">Channels &amp; automation</div>
+        <div class="stack-items">
+          <span class="stack-item si-green">Digital Engagement (WhatsApp inbound + outbound)</span>
+          <span class="stack-item si-amber">Platform Events (instant push trigger)</span>
+          <span class="stack-item si-amber">Salesforce Flow (record create + status update)</span>
+          <span class="stack-item si-amber">Einstein for Slack (rich notification card)</span>
+          <span class="stack-item si-amber">Slack Agent (approve / reject actions)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stack-label">End-to-end dealer journey</div>
+  <div class="journey-row">
+    <div class="journey-step" onclick="sendPrompt('Show me the WhatsApp conversational intake flow again ↗')">
+      <div class="js-title">Dealer sends VIN</div>
+      <div class="js-sub">WhatsApp message</div>
+      <span class="js-tag" style="background:#E1F5EE;color:#085041;">Digital Engagement</span>
+    </div>
+    <div class="journey-step" onclick="sendPrompt('How does Agentforce pre-fill fields from Automotive Cloud ↗')">
+      <div class="js-title">Auto-fill + intake</div>
+      <div class="js-sub">5 fields from AC · 4 conversational</div>
+      <span class="js-tag" style="background:#EEEDFE;color:#3C3489;">Agentforce</span>
+    </div>
+    <div class="journey-step" onclick="sendPrompt('How does the Platform Event trigger the Slack notification ↗')">
+      <div class="js-title">Claim created</div>
+      <div class="js-sub">Platform Event fires</div>
+      <span class="js-tag" style="background:#FAEEDA;color:#633806;">Automotive Cloud</span>
+    </div>
+    <div class="journey-step" onclick="sendPrompt('Show me the Slack approver notification and AI summary ↗')">
+      <div class="js-title">Approver notified</div>
+      <div class="js-sub">AI brief in Slack &lt;5 sec</div>
+      <span class="js-tag" style="background:#e3f0fc;color:#0070d2;">Slack + Data Cloud</span>
+    </div>
+    <div class="journey-step" onclick="sendPrompt('Show me the one-click Slack approval triggering the Salesforce Flow ↗')">
+      <div class="js-title">Approved in Slack</div>
+      <div class="js-sub">1-click · Flow updates record</div>
+      <span class="js-tag" style="background:#EAF3DE;color:#27500A;">Slack Agent</span>
+    </div>
+    <div class="journey-step" onclick="sendPrompt('Show me the Automotive Cloud audit trail after approval ↗')">
+      <div class="js-title">Dealer notified</div>
+      <div class="js-sub">WhatsApp · full audit trail</div>
+      <span class="js-tag" style="background:#E1F5EE;color:#085041;">Digital Engagement</span>
+    </div>
+  </div>
+
+  <div class="footer-row">
+    <span class="footer-claim">300,000 vehicles · 1,000+ claims/day · 3 approvers · 0 email dependency</span>
+    <span class="footer-stat">End-to-end: 2 min 43 sec avg resolution</span>
+  </div>
+
+</div>
+
+<button class="explore-btn" onclick="sendPrompt('Generate a detailed technical implementation guide for the Electra Cars Warranty Claim Agent — Agentforce topics, actions, flows, and Automotive Cloud data model ↗')">Get the technical implementation guide ↗</button>

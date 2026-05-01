@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlannerBundle xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <description>dealer warranty claim intake (VIN lookup, part suggestion, create Claim)</description>
+    <localActionLinks>
+        <genAiFunctionName>AnswerQuestionsWithKnowledge_16j935756d7d0d6</genAiFunctionName>
+    </localActionLinks>
+    <localTopicLinks>
+        <genAiPluginName>Submit_Warranty_Claim_16j05a92a3e9152</genAiPluginName>
+    </localTopicLinks>
+    <localTopics>
+        <fullName>Submit_Warranty_Claim_16j05a92a3e9152</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Handle end-to-end warranty claim submission from an Electra Dealer. Collect VIn, Fault description, part number, mileage and  labour hours. Pre-fill known fields, Confirm Summary before creating the claim record.</description>
+        <developerName>Submit_Warranty_Claim_16j05a92a3e9152</developerName>
+        <genAiPluginInstructions>
+            <description>Always start by asking for the VIN if not provided</description>
+            <developerName>instructions_0_1776091128785</developerName>
+            <language>en_US</language>
+            <masterLabel>instructions_0_1776091128785</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>After VIN is received, then execute WC_Lookup_Vehicle_by_VIN immediately.
+
+
+Never ask for vehicle model, year , dealer name or warranty status these are retrieved automatically.</description>
+            <developerName>instructions_0_1776344327624</developerName>
+            <language>en_US</language>
+            <masterLabel>instructions_0_1776344327624</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>After the vehicle is fetched successfully. confirm that you have identified the vehicle and
+
+Display the details fetched like Dealer Name, Vehicle Name, Warranty Status, Warranty End Date in a structured manner.
+
+If vehicle is not identified ask them to recheck VIN and provide correctly.
+
+Then ask the dealer to describe the issue that the customer is facing and ask the Mileage.</description>
+            <developerName>instructions_0_1776356604644</developerName>
+            <language>en_US</language>
+            <masterLabel>instructions_0_1776356604644</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Use WC_Suggest_Part_From_Fault after dealer describes the issue</description>
+            <developerName>instructions_1_1776091128792</developerName>
+            <language>en_US</language>
+            <masterLabel>instructions_1_1776091128792</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Present the suggested product as a confirmation not a question. Ask the dealer is this the part that you are working on.
+
+Once the dealer confirms, ask them to add an image of the part.
+
+Once you receive the mediaURL of the image then proceed ask them to provide estimated labor hours for the work.
+
+Keep the mediaURL handy we will use it during claim creation.</description>
+            <developerName>instructions_2_1776091128792</developerName>
+            <language>en_US</language>
+            <masterLabel>instructions_2_1776091128792</masterLabel>
+            <sortOrder>4</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Before creating the record, always show the summary to the the dealer and take the confirmation.</description>
+            <developerName>instructions_3_1776091128792</developerName>
+            <language>en_US</language>
+            <masterLabel>instructions_3_1776091128792</masterLabel>
+            <sortOrder>5</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Only After dealer provides confirmation, execute  action. And provide the Claim Name to the dealer.</description>
+            <developerName>instructions_4_1776091128792</developerName>
+            <language>en_US</language>
+            <masterLabel>instructions_4_1776091128792</masterLabel>
+            <sortOrder>6</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>As the welcome message asks the user if they are here to submit a claim today, once the dealer confirms ask them to provide the VIN for the vehicle for which they want submit a claim</description>
+            <developerName>instructions_5_1776091128792</developerName>
+            <language>en_US</language>
+            <masterLabel>instructions_5_1776091128792</masterLabel>
+            <sortOrder>7</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Always introduce yourself to welcome the dealer with message &apos;Hello, I&apos;m Electra Warranty Intake Agent. Are you looking to submit a claim today?&apos;</description>
+            <developerName>instruction_1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 1</masterLabel>
+            <sortOrder>8</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>WC_Lookup_Vehicle_by_VIN_179599b1b79cf12</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>WC_Suggest_Part_From_Fault_1796255ac5fbce3</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>WC_Create_Claim_Intake_with_image_179bm000002e953</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>WC_Lookup_Vehicle_by_VIN_179599b1b79cf12</fullName>
+            <description>Queries Vehicle by VIN and returns model, warranty, and dealer context.</description>
+            <developerName>WC_Lookup_Vehicle_by_VIN_179599b1b79cf12</developerName>
+            <invocationTarget>WC_VehicleLookupAction</invocationTarget>
+            <invocationTargetType>apex</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>WC_Lookup_Vehicle_by_VIN</localDeveloperName>
+            <masterLabel>WC Lookup Vehicle by VIN</masterLabel>
+            <progressIndicatorMessage>Looking up for vehicle....</progressIndicatorMessage>
+        </localActions>
+        <localActions>
+            <fullName>WC_Suggest_Part_From_Fault_1796255ac5fbce3</fullName>
+            <description>Calls Flex prompt (WC_Prompt_Config__mdt) with Knowledge/Data Library grounding; parses JSON; resolves Product2 by Id or ProductCode.</description>
+            <developerName>WC_Suggest_Part_From_Fault_1796255ac5fbce3</developerName>
+            <invocationTarget>WC_SuggestPartAction</invocationTarget>
+            <invocationTargetType>apex</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>WC_Suggest_Part_From_Fault</localDeveloperName>
+            <masterLabel>WC Suggest Part From Fault</masterLabel>
+            <progressIndicatorMessage>Fetching part....</progressIndicatorMessage>
+        </localActions>
+        <localActions>
+            <fullName>WC_Create_Claim_Intake_with_image_179bm000002e953</fullName>
+            <description>Creates Claim and ClaimItem; optionally queues HTTPS download of mediaUrl (WhatsApp Bearer in WC_ClaimMediaDownloadQueueable) as a Claim File.</description>
+            <developerName>WC_Create_Claim_Intake_with_image_179bm000002e953</developerName>
+            <invocationTarget>WC_CreateClaimIntakeWithAttachmentAction</invocationTarget>
+            <invocationTargetType>apex</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>WC_Create_Claim_Intake_with_image</localDeveloperName>
+            <masterLabel>WC Create Claim Intake (with image)</masterLabel>
+        </localActions>
+        <localDeveloperName>Submit_Warranty_Claim</localDeveloperName>
+        <masterLabel>Submit Warranty Claim</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Handle end-to-end warranty claim submission from an Electra Dealer. Collect VIn, Fault description, part number, mileage and  labour hours. Pre-fill known fields, Confirm Summary before creating the claim record.</scope>
+    </localTopics>
+    <masterLabel>Electra Warranty Intake Agent</masterLabel>
+    <plannerActions>
+        <fullName>AnswerQuestionsWithKnowledge_16j935756d7d0d6</fullName>
+        <description>Answers questions about company policies and procedures, troubleshooting steps, or product information. For example: “What is your return policy?” “How do I fix an issue?” or “What features does a product have?”</description>
+        <developerName>AnswerQuestionsWithKnowledge_16j935756d7d0d6</developerName>
+        <invocationTarget>streamKnowledgeSearch</invocationTarget>
+        <invocationTargetType>standardInvocableAction</invocationTargetType>
+        <isConfirmationRequired>false</isConfirmationRequired>
+        <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+        <localDeveloperName>AnswerQuestionsWithKnowledge</localDeveloperName>
+        <masterLabel>Answer Questions with Knowledge</masterLabel>
+        <progressIndicatorMessage>Getting answers</progressIndicatorMessage>
+        <source>EmployeeCopilot__AnswerQuestionsWithKnowledge</source>
+    </plannerActions>
+    <plannerSurfaces>
+        <adaptiveResponseAllowed>true</adaptiveResponseAllowed>
+        <callRecordingAllowed>false</callRecordingAllowed>
+        <surface>SurfaceAction__CustomerWebClient</surface>
+        <surfaceType>CustomerWebClient</surfaceType>
+    </plannerSurfaces>
+    <plannerSurfaces>
+        <adaptiveResponseAllowed>true</adaptiveResponseAllowed>
+        <callRecordingAllowed>false</callRecordingAllowed>
+        <surface>SurfaceAction__Messaging</surface>
+        <surfaceType>Messaging</surfaceType>
+    </plannerSurfaces>
+    <plannerType>AiCopilot__ReAct</plannerType>
+    <ruleExpressions>
+        <conditions>
+            <leftOperand>isVerified</leftOperand>
+            <leftOperandType>Variable</leftOperandType>
+            <operator>equal</operator>
+            <rightOperandValue>true</rightOperandValue>
+        </conditions>
+        <expression>Verified_User</expression>
+        <expressionLabel>Verified User</expressionLabel>
+        <expressionName>Verified_User</expressionName>
+        <expressionType>sel</expressionType>
+    </ruleExpressions>
+</GenAiPlannerBundle>

@@ -1,0 +1,42 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "VehicleRecordOutput" : {
+      "title" : "VehicleRecordOutput",
+      "description" : "Vehicle record for the matched VIN",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "Vehicle"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "VehicleFound" : {
+      "title" : "VehicleFound",
+      "description" : "True when a Vehicle with the normalized VIN exists.",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "VehicleId" : {
+      "title" : "VehicleId",
+      "description" : "Salesforce Id of the Vehicle when found; use for claim intake.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "DealerAccountId" : {
+      "title" : "DealerAccountId",
+      "description" : "Vehicle CurrentOwnerId (dealer Account) when found; required for claim creation.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

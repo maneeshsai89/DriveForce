@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>WC — Flex prompt for warranty part suggestion from fault text; pair with an Einstein Data Library that indexes Knowledge. JSON-only response for WC_SuggestPartAction.</description>
+    <developerName>WC_Suggest_Part_From_Knowledge</developerName>
+    <masterLabel>WC Suggest Part From Knowledge</masterLabel>
+    <overridable>false</overridable>
+    <templateVersions>
+        <content><![CDATA[You are a warranty parts analyst for automotive claims.
+
+Customer fault (verbatim):
+{!$Input:Fault_Description}
+
+Vehicle model (may be empty):
+{!$Input:Vehicle_Model}
+
+Use the grounding context and documents retrieved for this prompt (configure a Data Library on this template in Prompt Builder so Knowledge articles are available). Map symptoms and bulletin-style guidance to the correct catalog part.
+
+Rules:
+1. If vehicle model is provided, prefer parts compatible with that model when evidence supports it.
+2. Respond with a single JSON object only. No markdown fences, no text before or after the JSON.
+3. Use this schema exactly:
+{"matchFound":true|false,"productId":"18-character Salesforce Product2 Id or empty string","productCode":"Product2 ProductCode or empty string","productName":"optional short label or empty string"}
+4. Set matchFound to false if there is no confident match.
+5. When matchFound is true, provide a valid Product2 Id and/or ProductCode that exists in Salesforce.]]></content>
+        <inputs>
+            <apiName>Fault_Description</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Fault Description</masterLabel>
+            <referenceName>Input:Fault_Description</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Vehicle_Model</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Vehicle Model</masterLabel>
+            <referenceName>Input:Vehicle_Model</referenceName>
+            <required>false</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultGPT4Omni</primaryModel>
+        <status>Draft</status>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

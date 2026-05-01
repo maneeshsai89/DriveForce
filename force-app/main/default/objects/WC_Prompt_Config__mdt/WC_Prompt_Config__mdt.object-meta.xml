@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>WC — Names for Einstein Prompt Builder templates invoked from Apex.</description>
+    <label>WC Prompt Config</label>
+    <pluralLabel>WC Prompt Configs</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

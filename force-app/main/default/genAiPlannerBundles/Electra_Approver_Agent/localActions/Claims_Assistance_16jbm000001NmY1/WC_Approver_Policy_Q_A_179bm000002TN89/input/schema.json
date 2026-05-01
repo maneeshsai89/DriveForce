@@ -1,0 +1,42 @@
+{
+  "required" : [ "Input:User_Question" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Input:Claim_Id" : {
+      "title" : "Claim Id",
+      "description" : "Claim Id of the claim that user wants to check",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Input:AI_Summary" : {
+      "title" : "AI Summary",
+      "description" : "AI summary of the claim that user is referring to , take this from output of WC Prompt Content Action",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Input:User_Question" : {
+      "title" : "User Question",
+      "description" : "Question of the user",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Input:Claim_Context_Text" : {
+      "title" : "Claim Context Text",
+      "description" : "Context of the current claim take it from the output of WC Prompt Content",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "citationMode" : {
+      "title" : "Citation Mode",
+      "description" : "Select Citation Mode",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

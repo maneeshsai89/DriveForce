@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Dealer Claims Dashboard</masterLabel>
+    <description>Rich UI dashboard for dealer warranty claims with vehicle imagery</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="accountId" type="String" label="Account Id" description="Optional dealer Account Id override. If empty, uses logged-in user's Account."/>
+            <property name="dealershipName" type="String" label="Dealership Name" default="Summit Motors Portland"/>
+            <property name="dealershipLocation" type="String" label="Location" default="Portland, OR"/>
+            <property name="primaryColor" type="String" label="Primary Brand Color (hex)" default="#0B5394"/>
+            <property name="accentColor" type="String" label="Accent Color (hex)" default="#FF6B35"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

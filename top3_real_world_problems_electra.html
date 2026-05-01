@@ -1,0 +1,119 @@
+
+<style>
+.req-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.5rem 1.5rem 1.25rem; margin-bottom: 1.25rem; }
+.req-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 1rem; }
+.req-num { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 500; flex-shrink: 0; }
+.req-title { font-size: 16px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 3px; }
+.req-sub { font-size: 12px; color: var(--color-text-secondary); margin: 0; }
+.problem-box { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 10px 14px; margin-bottom: 12px; }
+.problem-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 4px; }
+.problem-text { font-size: 13px; color: var(--color-text-primary); margin: 0; line-height: 1.5; }
+.pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.pill { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 99px; }
+.pill-blue { background: var(--color-background-info); color: var(--color-text-info); }
+.pill-purple { background: #EEEDFE; color: #3C3489; }
+.pill-teal { background: #E1F5EE; color: #085041; }
+.pill-amber { background: #FAEEDA; color: #633806; }
+.metric-row { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 8px; margin-top: 12px; }
+.metric { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 10px 12px; }
+.metric-val { font-size: 20px; font-weight: 500; color: var(--color-text-primary); margin: 0; }
+.metric-lbl { font-size: 11px; color: var(--color-text-secondary); margin: 2px 0 0; }
+.explore-btn { margin-top: 14px; font-size: 12px; cursor: pointer; padding: 6px 14px; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-secondary); background: transparent; color: var(--color-text-secondary); width: 100%; }
+.explore-btn:hover { background: var(--color-background-secondary); }
+</style>
+
+<h2 class="sr-only">Top 3 real-world problems addressed by Electra Cars Warranty Claim Agent using Salesforce Agentforce</h2>
+
+<div style="padding: 0.5rem 0 0.25rem;">
+
+  <div class="req-card">
+    <div class="req-header">
+      <div class="req-num" style="background:#EEEDFE;color:#3C3489;">1</div>
+      <div>
+        <p class="req-title">Unstructured claim intake is killing dealer productivity</p>
+        <p class="req-sub">Real-world problem · Volume &amp; data quality</p>
+      </div>
+    </div>
+    <div class="problem-box">
+      <p class="problem-label" style="color:var(--color-text-danger);">The problem</p>
+      <p class="problem-text">Dealers spend 20–40 minutes per claim composing emails, attaching photos, and filling PDF forms — only for the OEM to reject submissions due to missing VINs, wrong part numbers, or incomplete fault descriptions. Over 1,000 claims daily means thousands of hours of wasted technician time and a high rework rate before a claim even reaches an approver.</p>
+    </div>
+    <div class="problem-box">
+      <p class="problem-label" style="color:var(--color-text-success);">Agentforce solution</p>
+      <p class="problem-text"><strong>Digitize the claim</strong> using Automotive Cloud's structured Warranty Claim object, and replace email with an <strong>Agentforce conversational agent</strong> on WhatsApp or web chat. The agent asks only what it doesn't already know — pulling VIN, model, and warranty coverage from Automotive Cloud automatically — so a dealer raises a complete, validated claim in under 3 minutes.</p>
+    </div>
+    <div class="metric-row">
+      <div class="metric"><p class="metric-val">~3 min</p><p class="metric-lbl">claim submission time</p></div>
+      <div class="metric"><p class="metric-val">0</p><p class="metric-lbl">incomplete submissions</p></div>
+      <div class="metric"><p class="metric-val">100%</p><p class="metric-lbl">structured digital records</p></div>
+    </div>
+    <div class="pills">
+      <span class="pill pill-purple">Automotive Cloud</span>
+      <span class="pill pill-purple">Agentforce Service Agent</span>
+      <span class="pill pill-blue">Digital Engagement (WhatsApp)</span>
+      <span class="pill pill-teal">Einstein Data Library</span>
+    </div>
+    <button class="explore-btn" onclick="sendPrompt('Show me how the Agentforce conversational agent collects warranty claim data from a dealer via WhatsApp, and how it pre-fills fields from Automotive Cloud ↗')">Explore the conversational intake flow ↗</button>
+  </div>
+
+  <div class="req-card">
+    <div class="req-header">
+      <div class="req-num" style="background:#E1F5EE;color:#085041;">2</div>
+      <div>
+        <p class="req-title">Approvers are flying blind — no context, no speed</p>
+        <p class="req-sub">Real-world problem · Approver bottleneck &amp; decision quality</p>
+      </div>
+    </div>
+    <div class="problem-box">
+      <p class="problem-label" style="color:var(--color-text-danger);">The problem</p>
+      <p class="problem-text">Only 3 approvers handle 1,000+ daily claims, each requiring them to manually open an email, locate the vehicle record, check warranty coverage, cross-reference service history, and form a judgment — with no AI assistance. Average review time is 15–20 minutes per claim. High-value or ambiguous claims get delayed, dealers chase status by phone, and approvers burn out.</p>
+    </div>
+    <div class="problem-box">
+      <p class="problem-label" style="color:var(--color-text-success);">Agentforce solution</p>
+      <p class="problem-text"><strong>Instant notification</strong> via Platform Event the moment a claim is submitted, with an <strong>Agentforce Approver Assistant</strong> that surfaces a pre-built AI summary directly inside a Slack message — covering vehicle history, warranty eligibility, part cost estimate, and a recommended action. The approver reads a 30-second brief instead of 15 minutes of manual research. <strong>Data Cloud</strong> enriches every summary with telematics and prior claim patterns.</p>
+    </div>
+    <div class="metric-row">
+      <div class="metric"><p class="metric-val">&lt;30 sec</p><p class="metric-lbl">to informed decision</p></div>
+      <div class="metric"><p class="metric-val">5×</p><p class="metric-lbl">approver throughput</p></div>
+      <div class="metric"><p class="metric-val">Real-time</p><p class="metric-lbl">Slack notification</p></div>
+    </div>
+    <div class="pills">
+      <span class="pill pill-purple">Agentforce Approver Agent</span>
+      <span class="pill pill-teal">Data Cloud (unified profile)</span>
+      <span class="pill pill-amber">Platform Events</span>
+      <span class="pill pill-blue">Slack (Einstein for Slack)</span>
+    </div>
+    <button class="explore-btn" onclick="sendPrompt('Show me what the Slack notification card looks like when an OEM approver receives a warranty claim, including the AI-generated summary and recommended action ↗')">Explore the approver Slack experience ↗</button>
+  </div>
+
+  <div class="req-card">
+    <div class="req-header">
+      <div class="req-num" style="background:#FAEEDA;color:#633806;">3</div>
+      <div>
+        <p class="req-title">Back-and-forth follow-up loops stall every complex claim</p>
+        <p class="req-sub">Real-world problem · Resolution cycle time &amp; fraud risk</p>
+      </div>
+    </div>
+    <div class="problem-box">
+      <p class="problem-label" style="color:var(--color-text-danger);">The problem</p>
+      <p class="problem-text">For borderline or high-value claims, approvers email dealers with follow-up questions and wait hours or days for responses — creating a multi-round loop that stretches resolution from same-day to 3–5 business days. Approvers also have no systematic way to detect anomalies: duplicate claims, mileage fraud, or parts claimed outside covered failure modes. Every delay costs the OEM in dealer satisfaction and the dealer in repair bay downtime.</p>
+    </div>
+    <div class="problem-box">
+      <p class="problem-label" style="color:var(--color-text-success);">Agentforce solution</p>
+      <p class="problem-text">An <strong>Intelligent Assistant agent</strong> embedded in the Slack approval thread lets the approver ask natural language questions ("Has this dealer submitted claims for this part before?"). The agent reasons across Data Cloud, Automotive Cloud records, and warranty policy documents in real time — citing evidence for its answers. The <strong>Slack Approval Workflow</strong> then lets the approver approve, reject, or request dealer clarification with a single button, triggering a Salesforce Flow that notifies the dealer instantly via WhatsApp or web chat.</p>
+    </div>
+    <div class="metric-row">
+      <div class="metric"><p class="metric-val">Same day</p><p class="metric-lbl">complex claim resolution</p></div>
+      <div class="metric"><p class="metric-val">AI-cited</p><p class="metric-lbl">fraud &amp; anomaly flags</p></div>
+      <div class="metric"><p class="metric-val">1 click</p><p class="metric-lbl">approve / reject / follow-up</p></div>
+    </div>
+    <div class="pills">
+      <span class="pill pill-purple">Agentforce Intelligent Assistant</span>
+      <span class="pill pill-blue">Slack Approval Workflow</span>
+      <span class="pill pill-teal">Data Cloud (fraud signals)</span>
+      <span class="pill pill-amber">Salesforce Flow automation</span>
+    </div>
+    <button class="explore-btn" onclick="sendPrompt('Show me how the Agentforce intelligent assistant handles a complex warranty claim follow-up in Slack, including how it detects anomalies using Data Cloud ↗')">Explore the intelligent follow-up loop ↗</button>
+  </div>
+
+</div>

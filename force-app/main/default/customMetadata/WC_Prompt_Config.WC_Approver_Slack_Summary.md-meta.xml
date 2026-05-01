@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>WC Approver Slack Summary</label>
+    <protected>false</protected>
+    <values>
+        <field>Llm_Application_Name__c</field>
+        <value xsi:type="xsd:string">EinsteinGpt</value>
+    </values>
+    <values>
+        <field>Suggest_Part_Template_Name__c</field>
+        <value xsi:type="xsd:string">WC_Suggest_Part_From_Knowledge</value>
+    </values>
+    <values>
+        <field>Approver_Summary_Template_Name__c</field>
+        <value xsi:type="xsd:string">WC_Approver_Slack_Summary</value>
+    </values>
+    <values>
+        <field>Electra_Reason_Template_Name__c</field>
+        <value xsi:type="xsd:string">WC_Electra_Auto_Approval_Reason</value>
+    </values>
+</CustomMetadata>

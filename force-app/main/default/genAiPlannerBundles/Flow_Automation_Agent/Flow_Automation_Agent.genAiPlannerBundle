@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlannerBundle xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <attributeMappings>
+        <attributeName>FlowBuilderAutomationsTopic_16jbm000001McHN.SummarizeFlow_179bm000002QsRp.input_flowMetadata</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>flowMetadata</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>FlowBuilderAutomationsTopic_16jbm000001McHN.EvolveFlow_179bm000002QsRp.input_flowMetadata</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>flowMetadata</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>FlowBuilderAutomationsTopic_16jbm000001McHN.EvolveFlow_179bm000002QsRp.output_evolvedFlow</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>evolvedFlow</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <description>Helps users draft, summarize, and modify their Salesforce flow automations. #DisableURLRedaction#</description>
+    <localActionLinks>
+        <genAiFunctionName>AnswerQuestionsWithKnowledge_16jbm000001McHN</genAiFunctionName>
+    </localActionLinks>
+    <localTopicLinks>
+        <genAiPluginName>FlowBuilderAutomationsTopic_16jbm000001McHN</genAiPluginName>
+    </localTopicLinks>
+    <localTopics>
+        <fullName>FlowBuilderAutomationsTopic_16jbm000001McHN</fullName>
+        <aiPluginUtterances>
+            <developerName>summarizeflow</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>summarize-flow</masterLabel>
+            <utterance>Summarize Flow.</utterance>
+        </aiPluginUtterances>
+        <canEscalate>false</canEscalate>
+        <description>Interacts with a user to draft, summarize, or modify existing flows using AI-powered analysis and generation.</description>
+        <developerName>FlowBuilderAutomationsTopic_16jbm000001McHN</developerName>
+        <genAiPluginInstructions>
+            <description>If a user wants to summarize a flow or understand what a flow does, always start by calling the SummarizeFlow action.</description>
+            <developerName>SummarizeFlowInstruction1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>SummarizeFlowInstruction1</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When a user requests to add, modify, update, enhance, change, edit, improve, remove, or delete any part of a flow: 1. Extract the EXACT text of what the user said in their last message in the conversation. 2. Call the EvolveFlow action. The userPrompt parameter is automatically populated with the user&apos;s message from the conversation. DO NOT ask the user for more details. Use whatever they said in their message. DO NOT modify or paraphrase the user&apos;s message. Pass the message exactly as they said it. The EvolveFlow action handles all flow modifications including: (1) Adding new elements (email alerts, record lookups, assignments, decision points, screens, loops, etc.) (2) Modifying existing element properties (email subjects, filter criteria, field values, connections, labels, descriptions, etc.) (3) Removing or deleting elements while maintaining proper flow connections. Examples of user messages that should trigger this:  - &quot;Add an email notification&quot; - &quot;Change the email subject&quot; - &quot;Add a filter&quot; - &quot;Remove the assignment element&quot;</description>
+            <developerName>ModifyFlowInstruction1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>ModifyFlowInstruction1</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>SummarizeFlow_179bm000002QsRp</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>EvolveFlow_179bm000002QsRp</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>SummarizeFlow_179bm000002QsRp</fullName>
+            <description>Generate a summary for the Flow.</description>
+            <developerName>SummarizeFlow_179bm000002QsRp</developerName>
+            <invocationTarget>summarizeFlow</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>SummarizeFlow</localDeveloperName>
+            <mappingAttributes>
+                <label>input_flowMetadata</label>
+                <name>input_flowMetadata</name>
+                <parameterName>flowMetadata</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <masterLabel>Summarize Flow</masterLabel>
+            <source>FlowAgentforce__SummarizeFlow</source>
+        </localActions>
+        <localActions>
+            <fullName>EvolveFlow_179bm000002QsRp</fullName>
+            <description>Modify an existing Salesforce Flow by adding new elements, updating specific properties, or removing components while preserving all unchanged flow data. Uses AI to analyze the user&apos;s natural language request and make precise, targeted changes to the flow structure.</description>
+            <developerName>EvolveFlow_179bm000002QsRp</developerName>
+            <invocationTarget>evolveFlow</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>EvolveFlow</localDeveloperName>
+            <mappingAttributes>
+                <label>input_flowMetadata</label>
+                <name>input_flowMetadata</name>
+                <parameterName>flowMetadata</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>output_evolvedFlow</label>
+                <name>output_evolvedFlow</name>
+                <parameterName>evolvedFlow</parameterName>
+                <parameterType>output</parameterType>
+            </mappingAttributes>
+            <masterLabel>Evolve Flow</masterLabel>
+            <source>FlowAgentforce__EvolveFlow</source>
+        </localActions>
+        <localDeveloperName>FlowBuilderAutomationsTopic</localDeveloperName>
+        <masterLabel>Automation Flows</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Your job is to draft a flow, summarize an existing flow&apos;s purpose and structure, or modify an existing flow by making precise and targeted changes while preserving all unchanged flow data.</scope>
+        <source>FlowAgentforce__FlowBuilderAutomationsTopic</source>
+    </localTopics>
+    <masterLabel>Flow Automation Agent</masterLabel>
+    <plannerActions>
+        <fullName>AnswerQuestionsWithKnowledge_16jbm000001McHN</fullName>
+        <description>Answers questions about company policies and procedures, troubleshooting steps, or product information. For example: “What is your return policy?” “How do I fix an issue?” or “What features does a product have?”</description>
+        <developerName>AnswerQuestionsWithKnowledge_16jbm000001McHN</developerName>
+        <invocationTarget>streamKnowledgeSearch</invocationTarget>
+        <invocationTargetType>standardInvocableAction</invocationTargetType>
+        <isConfirmationRequired>false</isConfirmationRequired>
+        <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+        <localDeveloperName>AnswerQuestionsWithKnowledge</localDeveloperName>
+        <masterLabel>Answer Questions with Knowledge</masterLabel>
+        <progressIndicatorMessage>Getting answers</progressIndicatorMessage>
+        <source>EmployeeCopilot__AnswerQuestionsWithKnowledge</source>
+    </plannerActions>
+    <plannerSurfaces>
+        <adaptiveResponseAllowed>true</adaptiveResponseAllowed>
+        <callRecordingAllowed>false</callRecordingAllowed>
+        <surface>SurfaceAction__Messaging</surface>
+        <surfaceType>Messaging</surfaceType>
+    </plannerSurfaces>
+    <plannerType>AiCopilot__ReAct</plannerType>
+</GenAiPlannerBundle>

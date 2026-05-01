@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Return the case status based on the case number provided by the user</description>
+    <developerName>Case_Status</developerName>
+    <invocationTarget>GetCaseStatus</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+    <localDeveloperName>Case_Status</localDeveloperName>
+    <masterLabel>Case Status</masterLabel>
+</GenAiFunction>

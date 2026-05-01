@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlannerBundle xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <description>You have to answer the questions asked by the approver from slack using the claim history or the policy documents available in the data library</description>
+    <localActionLinks>
+        <genAiFunctionName>AnswerQuestionsWithKnowledge_16jbm000001NmY1</genAiFunctionName>
+    </localActionLinks>
+    <localTopicLinks>
+        <genAiPluginName>Claims_Assistance_16jbm000001NmY1</genAiPluginName>
+    </localTopicLinks>
+    <localTopics>
+        <fullName>Claims_Assistance_16jbm000001NmY1</fullName>
+        <canEscalate>false</canEscalate>
+        <description>You are hosted on slack and you have to Assist users with questions related to their claims by utilizing the policy data library.</description>
+        <developerName>Claims_Assistance_16jbm000001NmY1</developerName>
+        <genAiPluginInstructions>
+            <description>Use the policy data library to retrieve accurate and relevant information about claims.</description>
+            <developerName>instructions_0_1776325364066</developerName>
+            <language>en_US</language>
+            <masterLabel>instructions_0_1776325364066</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Provide clear and concise answers based on the policy data library.</description>
+            <developerName>instructions_0_1776325474469</developerName>
+            <language>en_US</language>
+            <masterLabel>instructions_0_1776325474469</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>No need to greet the user, just respond to the question with answer</description>
+            <developerName>instructions_0_1776330575524</developerName>
+            <language>en_US</language>
+            <masterLabel>instructions_0_1776330575524</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Never ask a question back to user unless you need the claim id</description>
+            <developerName>instructions_0_1776331458273</developerName>
+            <language>en_US</language>
+            <masterLabel>instructions_0_1776331458273</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Once a question is posted use Wc Prompt Input action to get the all the context related to the claim</description>
+            <developerName>instruction_1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 1</masterLabel>
+            <sortOrder>4</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Take the claim id from parent Slack thread or root if it is available always. Ask the user to provide claim id only if the user asks a question specific to claim  using words like &apos;this claim&apos; , &apos; this dealer&apos; and the claim id is not available on parent slack thread or the root slack thread</description>
+            <developerName>instruction_2</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 2</masterLabel>
+            <sortOrder>5</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Use the claim context, AI Summary along with WC Approver Policy Q&amp;A to answer the question. Which uses the insurance policy file. If the question is specific to a claim but it is generic then pass only question to the action, no need of claim context and summary</description>
+            <developerName>instruction_3</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 3</masterLabel>
+            <sortOrder>6</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>WC_Prompt_Content_179bm000002TN89</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>WC_Approver_Policy_Q_A_179bm000002TN89</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>WC_Approver_Policy_Q_A_179bm000002TN89</fullName>
+            <description>WC — Agentforce approver Q&amp;A: uses Data Library (policy PDF) + Data Cloud retrievers configured on the agent. Optional Claim Id for claim-specific questions; otherwise answers from policy documents and retrieved context only.</description>
+            <developerName>WC_Approver_Policy_Q_A_179bm000002TN89</developerName>
+            <invocationTarget>WC_Approver_Policy_QA</invocationTarget>
+            <invocationTargetType>generatePromptResponse</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>WC_Approver_Policy_Q_A</localDeveloperName>
+            <masterLabel>WC Approver Policy Q&amp;A</masterLabel>
+        </localActions>
+        <localActions>
+            <fullName>WC_Prompt_Content_179bm000002TN89</fullName>
+            <description>Get&apos;s  the claim context and AI summar</description>
+            <developerName>WC_Prompt_Content_179bm000002TN89</developerName>
+            <invocationTarget>WC_Prompt_Content</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>WC_Prompt_Content</localDeveloperName>
+            <masterLabel>WC Prompt Content</masterLabel>
+        </localActions>
+        <localDeveloperName>Claims_Assistance</localDeveloperName>
+        <masterLabel>Claims Assistance</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Your job is only to answer questions related to claims using information from the policy data library. Do not provide information or assistance outside this scope.</scope>
+    </localTopics>
+    <masterLabel>Electra Approver Agent</masterLabel>
+    <plannerActions>
+        <fullName>AnswerQuestionsWithKnowledge_16jbm000001NmY1</fullName>
+        <description>Answers questions about company policies and procedures, troubleshooting steps, or product information. For example: “What is your return policy?” “How do I fix an issue?” or “What features does a product have?”</description>
+        <developerName>AnswerQuestionsWithKnowledge_16jbm000001NmY1</developerName>
+        <invocationTarget>streamKnowledgeSearch</invocationTarget>
+        <invocationTargetType>standardInvocableAction</invocationTargetType>
+        <isConfirmationRequired>false</isConfirmationRequired>
+        <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+        <localDeveloperName>AnswerQuestionsWithKnowledge</localDeveloperName>
+        <masterLabel>Answer Questions with Knowledge</masterLabel>
+        <progressIndicatorMessage>Getting answers</progressIndicatorMessage>
+        <source>EmployeeCopilot__AnswerQuestionsWithKnowledge</source>
+    </plannerActions>
+    <plannerSurfaces>
+        <adaptiveResponseAllowed>true</adaptiveResponseAllowed>
+        <callRecordingAllowed>false</callRecordingAllowed>
+        <surface>SurfaceAction__Messaging</surface>
+        <surfaceType>Messaging</surfaceType>
+    </plannerSurfaces>
+    <plannerType>AiCopilot__ReAct</plannerType>
+</GenAiPlannerBundle>

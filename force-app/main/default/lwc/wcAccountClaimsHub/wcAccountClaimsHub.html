@@ -1,0 +1,142 @@
+<template>
+    <div class="hub-root">
+        <template lwc:if={hasContext}>
+            <section class="hub-hero hub-surface">
+                <div class="hub-hero-copy">
+                    <p class="hub-kicker">Dealer Operations Portal</p>
+                    <h1 class="hub-title">My Claims</h1>
+                    <p class="hub-sub">{headerSubtitle}</p>
+                    <div class="hub-hero-tags">
+                        <span class="hub-tag">Warranty Claims</span>
+                        <span class="hub-tag">Live Decisions</span>
+                        <span class="hub-tag">Faster Settlements</span>
+                    </div>
+                </div>
+                <img
+                    class="hub-hero-image"
+                    src={dealerHeroImageUrl}
+                    alt="Illustration of a vehicle dealership and service team"
+                />
+            </section>
+
+            <section class="hub-surface hub-surface-metrics">
+                <template lwc:if={metricError}>
+                    <div class="hub-metric-error">{metricError}</div>
+                </template>
+                <template lwc:else>
+                    <div class="hub-metric-grid">
+                        <div class="hub-metric-tile hub-metric-total">
+                            <div class="hub-metric-label">Total claims</div>
+                            <div class="hub-metric-value">{totalRaised}</div>
+                            <div class="hub-metric-sub">{totalSubtext}</div>
+                        </div>
+                        <div class="hub-metric-tile hub-metric-review">
+                            <div class="hub-metric-label">Under review</div>
+                            <div class="hub-metric-value">{pendingCount}</div>
+                            <div class="hub-metric-sub">{pendingSubtext}</div>
+                        </div>
+                        <div class="hub-metric-tile hub-metric-approved">
+                            <div class="hub-metric-label">Approved</div>
+                            <div class="hub-metric-value">{approvedCount}</div>
+                            <div class="hub-metric-sub">{approvedSubtext}</div>
+                        </div>
+                        <div class="hub-metric-tile hub-metric-rejected">
+                            <div class="hub-metric-label">Rejected</div>
+                            <div class="hub-metric-value">{rejectedCount}</div>
+                            <div class="hub-metric-sub">{rejectedSubtext}</div>
+                        </div>
+                    </div>
+                </template>
+            </section>
+
+            <div class="hub-grid">
+                <section class="hub-surface hub-surface-main">
+                    <c-wc-account-claims-table
+                        embedded
+                        account-id={resolvedAccountId}
+                        onclaimselect={handleClaimSelect}
+                    ></c-wc-account-claims-table>
+                </section>
+
+                <aside class="hub-surface hub-surface-side">
+                    <template lwc:if={selectedClaim}>
+                        <div class="side-hero">
+                            <div class="side-hero-icon" aria-hidden="true">{claimMonogram}</div>
+                            <div class="side-hero-body">
+                                <a class="side-hero-name" href={selectedClaimUrl}>{selectedClaim.name}</a>
+                                <div class="side-hero-vehicle">{selectedClaim.vehicleDisplay}</div>
+                                <span class={claimBadgeClass}>{claimBadgeLabel}</span>
+                            </div>
+                        </div>
+
+                        <dl class="side-dl">
+                            <div class="side-dl-row">
+                                <dt>VIN</dt>
+                                <dd>{selectedClaim.vehicleVin}</dd>
+                            </div>
+                            <div class="side-dl-row">
+                                <dt>Issue</dt>
+                                <dd>{selectedClaim.issueDisplay}</dd>
+                            </div>
+                            <div class="side-dl-row">
+                                <dt>Filed via</dt>
+                                <dd>{selectedClaim.submissionChannel}</dd>
+                            </div>
+                            <div class="side-dl-row">
+                                <dt>CRM status</dt>
+                                <dd>{selectedClaim.status}</dd>
+                            </div>
+                            <div class="side-dl-row">
+                                <dt>Processing</dt>
+                                <dd>{selectedClaim.processingHint}</dd>
+                            </div>
+                            <div class="side-dl-row">
+                                <dt>Est. amount</dt>
+                                <dd>
+                                    <template lwc:if={hasSelectedEstimate}>
+                                        <lightning-formatted-number
+                                            value={selectedClaim.estimatedAmount}
+                                            format-style="decimal"
+                                            minimum-fraction-digits="2"
+                                            maximum-fraction-digits="2"
+                                        ></lightning-formatted-number>
+                                    </template>
+                                    <template lwc:else>—</template>
+                                </dd>
+                            </div>
+                        </dl>
+
+                        <div class="side-tl-head">Claim timeline</div>
+                        <ul class="side-tl">
+                            <template for:each={timelineSteps} for:item="step">
+                                <li key={step.key} class="side-tl-item">
+                                    <span class={step.dotClass}></span>
+                                    <div class="side-tl-text">
+                                        <div class="side-tl-label">{step.label}</div>
+                                        <div class="side-tl-sub">{step.sub}</div>
+                                    </div>
+                                </li>
+                            </template>
+                        </ul>
+                    </template>
+                    <template lwc:else>
+                        <div class="side-empty">
+                            <img
+                                class="side-empty-image"
+                                src={dealerInsightImageUrl}
+                                alt="Dealer service team preparing claim review"
+                            />
+                            <div class="side-empty-copy">
+                                <div class="side-empty-title">Claim details will appear here</div>
+                                <div>Select a claim in the list to view detailed status and timeline milestones.</div>
+                            </div>
+                        </div>
+                    </template>
+                </aside>
+            </div>
+        </template>
+        <template lwc:else>
+            <div class="hub-empty">Add this component to an Account record page, or set Account Id on an app page.</div>
+        </template>
+    </div>
+</template>
