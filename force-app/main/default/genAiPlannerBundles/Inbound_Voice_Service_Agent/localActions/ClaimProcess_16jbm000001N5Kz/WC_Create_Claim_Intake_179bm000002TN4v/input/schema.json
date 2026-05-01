@@ -1,0 +1,77 @@
+{
+  "required" : [ "dealerAccountId", "faultDescription", "productId", "submissionChannel", "vehicleId", "vin" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "aiRiskScore" : {
+      "title" : "AI Risk Score",
+      "description" : "Optional AI-generated risk or confidence score for the claim.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "dealerAccountId" : {
+      "title" : "Dealer Account Id",
+      "description" : "Account Id for the dealer",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "estimatedAmount" : {
+      "title" : "Estimated Amount",
+      "description" : "Optional override. If omitted, amount = Product WC_Product_Amount__c + (labour hours × WC_Labour_Charge_per_hour__c). If that computes to zero, this value is used when provided.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "faultDescription" : {
+      "title" : "Fault Description",
+      "description" : "Customer or dealer description of the fault or symptom.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "labourHours" : {
+      "title" : "Labour Hours",
+      "description" : "Estimated labour hours for the repair line.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "mileageAtClaim" : {
+      "title" : "Mileage At Claim",
+      "description" : "Odometer reading at time of claim, if known.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "productId" : {
+      "title" : "Product Id",
+      "description" : "Product2 Id for the claimed part",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "submissionChannel" : {
+      "title" : "Submission Channel",
+      "description" : "WhatsApp, Web, or Portal",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "vehicleId" : {
+      "title" : "Vehicle Id",
+      "description" : "Salesforce Vehicle Id from lookup",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "vin" : {
+      "title" : "VIN",
+      "description" : "16-character VIN; must match the vehicle from lookup.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

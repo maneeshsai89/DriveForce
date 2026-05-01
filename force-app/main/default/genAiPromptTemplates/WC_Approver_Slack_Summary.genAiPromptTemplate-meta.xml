@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>WC — Approver-facing summary for Slack; uses claim context + dealer metrics. Outputs JSON including riskScore 0–100 for WC_GenerateApproverSummaryAction.</description>
+    <developerName>WC_Approver_Slack_Summary</developerName>
+    <masterLabel>WC Approver Slack Summary</masterLabel>
+    <overridable>false</overridable>
+    <templateVersions>
+        <content><![CDATA[You are a senior warranty approver assistant. Produce a concise, factual summary for a human approver in Slack.
+
+Claim and vehicle context:
+{!$Input:Claim_Context}
+
+Dealer history and metrics (aligned with analytics / Data Cloud insight definitions on the same CRM data):
+{!$Input:Dealer_Insights_Text}
+
+Risk instructions (whether a score already exists on the claim):
+{!$Input:Risk_Score_Label}
+
+Rules:
+1. Do not invent vehicle or claim facts not present in the context.
+2. Reference dealer metrics when relevant (volumes, outcomes, repeat part).
+3. Assign riskScore (integer 0–100) using only the information above. Higher means higher approver concern (e.g. high estimated cost relative to norms, ambiguous fault, repeat part patterns, adverse dealer outcome mix, or thin context). Lower means routine, well-described, or clearly supported claims. You must output an integer; do not leave riskScore null.
+4. Respond with a single JSON object only. No markdown fences, no text before or after the JSON.
+5. Use this schema exactly:
+{"summary":"2-4 sentences for Slack","recommendedAction":"Approve"|"Reject"|"Review","confidenceNote":"short note on confidence or what to verify","riskScore":0}]]></content>
+        <inputs>
+            <apiName>Claim_Context</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Claim Context</masterLabel>
+            <referenceName>Input:Claim_Context</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Dealer_Insights_Text</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Dealer Insights Text</masterLabel>
+            <referenceName>Input:Dealer_Insights_Text</referenceName>
+            <required>false</required>
+        </inputs>
+        <inputs>
+            <apiName>Risk_Score_Label</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Risk instructions</masterLabel>
+            <referenceName>Input:Risk_Score_Label</referenceName>
+            <required>false</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultGPT4Omni</primaryModel>
+        <status>Draft</status>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

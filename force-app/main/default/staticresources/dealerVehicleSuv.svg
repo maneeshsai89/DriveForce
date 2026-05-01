@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">SUV illustration</title>
+  <desc id="desc">A stylized SUV vehicle image for claim cards.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#264d45"/>
+      <stop offset="100%" stop-color="#1f7c69"/>
+    </linearGradient>
+    <linearGradient id="car" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#59d0a7"/>
+      <stop offset="100%" stop-color="#218a6f"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <rect x="0" y="270" width="640" height="90" fill="#143d35"/>
+  <g transform="translate(90 136)">
+    <rect x="0" y="48" width="460" height="88" rx="24" fill="url(#car)"/>
+    <path d="M96 48h218c38 0 72 20 92 48H36c18-29 34-48 60-48z" fill="#8ae5c4"/>
+    <rect x="108" y="10" width="132" height="54" rx="12" fill="#ddfff3"/>
+    <rect x="250" y="18" width="114" height="46" rx="11" fill="#cef7e8"/>
+    <rect x="372" y="30" width="50" height="34" rx="8" fill="#bceedd"/>
+    <circle cx="106" cy="146" r="28" fill="#15273a"/>
+    <circle cx="352" cy="146" r="28" fill="#15273a"/>
+    <circle cx="106" cy="146" r="12" fill="#edf6ff"/>
+    <circle cx="352" cy="146" r="12" fill="#edf6ff"/>
+  </g>
+</svg>

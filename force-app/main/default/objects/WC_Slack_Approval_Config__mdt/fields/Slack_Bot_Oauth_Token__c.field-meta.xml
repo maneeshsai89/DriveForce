@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Slack_Bot_Oauth_Token__c</fullName>
+    <description>WC — Bot User OAuth Token (xoxb-…) for Slack Web API chat.update. Required to refresh the approver message after Electra auto-approve. Store only in org config, not in source control.</description>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <label>Slack Bot OAuth Token</label>
+    <length>32768</length>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

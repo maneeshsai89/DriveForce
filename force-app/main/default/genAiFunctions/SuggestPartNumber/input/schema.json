@@ -1,0 +1,21 @@
+{
+  "required" : [ "faultDescription" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "faultDescription" : {
+      "title" : "Fault Description",
+      "description" : "Free-text fault or symptom; used by the prompt to suggest a spare part.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "vehicleModel" : {
+      "title" : "Vehicle Model",
+      "description" : "Optional vehicle model string from Vehicle lookup (ModelName); do not ask the user.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

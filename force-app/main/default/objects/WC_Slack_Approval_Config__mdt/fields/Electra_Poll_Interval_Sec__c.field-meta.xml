@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Electra_Poll_Interval_Sec__c</fullName>
+    <description>WC — How often WC_ElectraAutoApproveSchedulable runs (seconds). 60 = every minute, 120 = every 2 min. Min 60.</description>
+    <externalId>false</externalId>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <label>Electra Poll Interval Sec</label>
+    <precision>6</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

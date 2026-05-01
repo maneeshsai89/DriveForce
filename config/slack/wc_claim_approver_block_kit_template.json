@@ -1,0 +1,49 @@
+{
+  "blocks": [
+    {
+      "type": "header",
+      "text": { "type": "plain_text", "text": "New warranty claim — review required" }
+    },
+    {
+      "type": "section",
+      "fields": [
+        { "type": "mrkdwn", "text": "*Claim*\n{{claimName}}" },
+        { "type": "mrkdwn", "text": "*Dealer*\n{{dealerName}}" },
+        { "type": "mrkdwn", "text": "*VIN*\n{{vin}}" },
+        { "type": "mrkdwn", "text": "*Est. amount*\n{{estimatedAmount}}" },
+        { "type": "mrkdwn", "text": "*Risk*\n{{riskLabel}} ({{riskScore}})" },
+        { "type": "mrkdwn", "text": "*Claim Id*\n`{{claimId}}`" }
+      ]
+    },
+    { "type": "section", "text": { "type": "mrkdwn", "text": "*AI summary*\n{{aiSummary}}" } },
+    {
+      "type": "actions",
+      "block_id": "wc_claim_actions",
+      "elements": [
+        {
+          "type": "button",
+          "text": { "type": "plain_text", "text": "Approve" },
+          "style": "primary",
+          "action_id": "wc_approve_claim",
+          "value": "{{claimId}}"
+        },
+        {
+          "type": "button",
+          "text": { "type": "plain_text", "text": "Reject" },
+          "style": "danger",
+          "action_id": "wc_reject_claim",
+          "value": "{{claimId}}"
+        }
+      ]
+    },
+    {
+      "type": "context",
+      "elements": [
+        {
+          "type": "mrkdwn",
+          "text": "If buttons are not wired to Salesforce, use the Slack Workflow in WC_SLACK_OPTION1_BUILD.md (Slack Workflow Builder → Run Salesforce Flow)."
+        }
+      ]
+    }
+  ]
+}

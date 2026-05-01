@@ -1,0 +1,198 @@
+system:
+    instructions: |
+        You are a warranty claim intake assistant for automotive dealers (Use Case 1).
+        Help the user submit a warranty claim: validate the vehicle by VIN, optionally suggest a part from the fault description,
+        confirm details, then create a submitted Claim and line. Be concise and professional.
+    messages:
+        welcome: "Hi — I can help you submit a warranty claim. I will need the vehicle VIN, a fault description, and confirmation of the part to claim. When you are ready, share the 17-character VIN."
+        error: "Sorry, something went wrong. Please try again or contact support."
+
+config:
+    developer_name: "WC_Warranty_Claim_Intake_UC1"
+    default_agent_user: "epic.9aa2b80f7f87@orgfarm.salesforce.com"
+    agent_label: "WC Warranty Claim Intake"
+    description: "Use Case 1 — dealer warranty claim intake (VIN lookup, part suggestion, create Claim)"
+
+variables:
+    EndUserId: linked string
+        source: @MessagingSession.MessagingEndUserId
+        description: "Messaging end user id"
+    RoutableId: linked string
+        source: @MessagingSession.Id
+        description: "Messaging session id"
+    ContactId: linked string
+        source: @MessagingEndUser.ContactId
+        description: "Contact id if known"
+    EndUserLanguage: linked string
+        source: @MessagingSession.EndUserLanguage
+        description: "End user language"
+    VerifiedCustomerId: mutable string
+        description: "Verified customer id"
+    wc_vin: mutable string
+        description: "17-character VIN for the claim"
+    wc_vehicle_id: mutable string
+        description: "Vehicle Id from lookup"
+    wc_dealer_account_id: mutable string
+        description: "Dealer Account Id (Current Owner)"
+    wc_vehicle_model: mutable string
+        description: "Vehicle model for part suggestion"
+    wc_fault: mutable string
+        description: "Fault description from the dealer"
+    wc_product_id: mutable string
+        description: "Product2 Id for ClaimItem"
+    wc_mileage: mutable number
+        description: "Odometer at claim"
+    wc_labour_hours: mutable number
+        description: "Labour hours"
+    wc_estimated_amount: mutable number
+        description: "Estimated claim amount"
+    wc_submission_channel: mutable string
+        description: "WhatsApp, Web, or Portal"
+    wc_ai_risk: mutable number
+        description: "Optional AI risk score"
+
+language:
+    default_locale: "en_US"
+    additional_locales: ""
+    all_additional_locales: False
+
+start_agent warranty_claim_intake:
+    label: "Warranty claim intake"
+    description: "Collect VIN, run lookup, suggest part, create claim"
+
+    actions:
+        lookup_vehicle:
+            description: "Resolve VIN to Vehicle, dealer, and warranty summary"
+            label: "WC Lookup Vehicle by VIN"
+            require_user_confirmation: False
+            include_in_progress_indicator: True
+            progress_indicator_message: "Looking up vehicle..."
+            inputs:
+                vin: string
+                    description: "17-character VIN"
+                    label: "VIN"
+                    is_required: True
+            outputs:
+                found: boolean
+                    description: "Whether the vehicle was found"
+                    filter_from_agent: False
+                vehicleId: string
+                    description: "Salesforce Vehicle Id"
+                dealerAccountId: string
+                    description: "Dealer Account Id"
+                vehicleModel: string
+                    description: "Vehicle model name"
+                warrantyStatus: string
+                    description: "Warranty status"
+                dealerName: string
+                    description: "Dealer account name"
+            target: "apex://WC_VehicleLookupAction"
+
+        suggest_part:
+            description: "Suggest a part from fault text using Knowledge-backed prompt"
+            label: "WC Suggest Part From Fault"
+            require_user_confirmation: False
+            include_in_progress_indicator: True
+            progress_indicator_message: "Suggesting a part..."
+            inputs:
+                faultDescription: string
+                    description: "Customer fault description"
+                    label: "Fault Description"
+                    is_required: True
+                vehicleModel: string
+                    description: "Vehicle model (optional filter)"
+                    label: "Vehicle Model"
+                    is_required: False
+            outputs:
+                matchFound: boolean
+                    description: "Whether a match was found"
+                suggestedProductId: string
+                    description: "Suggested Product2 Id"
+                productName: string
+                    description: "Product name"
+                productCode: string
+                    description: "Product code"
+            target: "apex://WC_SuggestPartAction"
+
+        create_claim:
+            description: "Create Claim, ClaimItem, and publish WC_WarrantyClaimSubmitted__e"
+            label: "WC Create Claim Intake"
+            require_user_confirmation: True
+            include_in_progress_indicator: True
+            progress_indicator_message: "Submitting claim..."
+            inputs:
+                dealerAccountId: string
+                    description: "Dealer Account Id"
+                    is_required: True
+                vehicleId: string
+                    description: "Vehicle Id"
+                    is_required: True
+                productId: string
+                    description: "Product2 Id for the claimed part"
+                    is_required: True
+                faultDescription: string
+                    description: "Fault description"
+                    is_required: True
+                vin: string
+                    description: "VIN"
+                    is_required: True
+                mileageAtClaim: number
+                    description: "Mileage at claim"
+                    is_required: False
+                labourHours: number
+                    description: "Labour hours"
+                    is_required: False
+                estimatedAmount: number
+                    description: "Estimated amount"
+                    is_required: False
+                submissionChannel: string
+                    description: "WhatsApp, Web, or Portal"
+                    is_required: True
+                aiRiskScore: number
+                    description: "Optional AI risk score"
+                    is_required: False
+            outputs:
+                success: boolean
+                    description: "Whether the claim was created"
+                claimId: string
+                    description: "Claim Id"
+                claimName: string
+                    description: "Claim name"
+                errorMessage: string
+                    description: "Error message if any"
+            target: "apex://WC_CreateClaimIntakeAction"
+
+    reasoning:
+        instructions: ->
+            | Guide the dealer through warranty intake:
+            | 1) Ask for the VIN. When provided, run {!@actions.lookup_vehicle_tool} with vin=... (extract 17 characters).
+            | 2) If found is false, explain that no vehicle matched and stop.
+            | 3) If found, briefly summarize model, warranty status, and dealer name. Store vehicleId and dealerAccountId in context.
+            | 4) Ask for the fault description. Run {!@actions.suggest_part_tool} with faultDescription=... and vehicleModel from lookup if available.
+            | 5) If a product is suggested, confirm the part with the dealer; use suggestedProductId as productId when confirmed (or allow manual Product Id if no match).
+            | 6) Collect mileage, labour hours, estimated amount, and submission channel (default Web if not specified). Optional AI risk score.
+            | 7) Before submitting, summarize everything and obtain explicit confirmation. Then run {!@actions.create_claim_tool} with all required fields.
+            | Never invent Salesforce Ids; use outputs from lookup and suggest actions.
+        actions:
+            lookup_vehicle_tool: @actions.lookup_vehicle
+                with vin=...
+                set @variables.wc_vehicle_id = @outputs.vehicleId
+                set @variables.wc_dealer_account_id = @outputs.dealerAccountId
+                set @variables.wc_vehicle_model = @outputs.vehicleModel
+
+            suggest_part_tool: @actions.suggest_part
+                with faultDescription=...
+                with vehicleModel=@variables.wc_vehicle_model
+                set @variables.wc_product_id = @outputs.suggestedProductId
+
+            create_claim_tool: @actions.create_claim
+                with dealerAccountId=@variables.wc_dealer_account_id
+                with vehicleId=@variables.wc_vehicle_id
+                with productId=@variables.wc_product_id
+                with faultDescription=...
+                with vin=...
+                with mileageAtClaim=@variables.wc_mileage
+                with labourHours=@variables.wc_labour_hours
+                with estimatedAmount=@variables.wc_estimated_amount
+                with submissionChannel=@variables.wc_submission_channel
+                with aiRiskScore=@variables.wc_ai_risk

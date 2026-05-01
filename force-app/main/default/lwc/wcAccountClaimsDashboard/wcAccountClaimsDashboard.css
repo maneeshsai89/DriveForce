@@ -1,0 +1,128 @@
+.state-wrap {
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+
+.state-wrap--loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.875rem;
+    min-height: 10rem;
+    padding: 2rem 1rem;
+}
+
+.state-wrap-hint {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--lwc-colorTextWeak, #706e6b);
+}
+
+.metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+    gap: 0.75rem;
+    padding: 0 1rem 1rem;
+}
+
+.metric-tile {
+    border-radius: 0.25rem;
+    padding: 1rem 0.75rem;
+    text-align: center;
+    border: 1px solid var(--lwc-colorBorder, #dddbda);
+    background: var(--lwc-colorBackgroundAlt, #fafaf9);
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    color: var(--lwc-colorTextWeak, #706e6b);
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin-bottom: 0.35rem;
+}
+
+.metric-value {
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--lwc-colorTextDefault, #080707);
+}
+
+.tile-total .metric-value {
+    color: var(--lwc-colorTextDefault, #080707);
+}
+
+.tile-pending .metric-value {
+    color: #b65c00;
+}
+
+.tile-approved .metric-value {
+    color: #2e844a;
+}
+
+.tile-rejected .metric-value {
+    color: #ba0517;
+}
+
+/* Embedded portal metrics (hub layout) */
+.portal-metric-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+@media (max-width: 48rem) {
+    .portal-metric-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.portal-tile {
+    background: #ffffff;
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5e5e5;
+    border-top-width: 4px;
+    border-top-style: solid;
+    text-align: left;
+}
+
+.portal-tile-total {
+    border-top-color: #f38303;
+}
+
+.portal-tile-review {
+    border-top-color: #0176d3;
+}
+
+.portal-tile-approved {
+    border-top-color: #2e844a;
+}
+
+.portal-tile-rejected {
+    border-top-color: #e5a000;
+}
+
+.portal-tile-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #706e6b;
+    margin-bottom: 0.35rem;
+}
+
+.portal-tile-value {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #181818;
+}
+
+.portal-tile-sub {
+    margin-top: 0.35rem;
+    font-size: 0.75rem;
+    color: #706e6b;
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WC_Time_To_Decision_Minutes__c</fullName>
+    <description>WC — Minutes from Claim CreatedDate to WC Approved At (blank until approved).</description>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(WC_Approved_At__c), NULL, (WC_Approved_At__c - CreatedDate) * 24 * 60)</formula>
+    <formulaTreatBlanksAs>BlankAsBlank</formulaTreatBlanksAs>
+    <label>WC Time To Decision Minutes</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

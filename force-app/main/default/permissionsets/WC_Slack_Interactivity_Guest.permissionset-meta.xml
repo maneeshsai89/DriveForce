@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <classAccesses>
+        <apexClass>WC_SlackClaimApprovalService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>WC_SlackClaimDecisionQueueable</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>WC_SlackResponseUrlQueueable</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>WC_SlackInteractivityRest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <description>WC — Assign to the Experience / Site Guest User for Slack Interactivity (Apex REST). Guest licenses often cannot use Run Flows or Claim CRUD; claim updates use Database.update(..., SYSTEM_MODE) in WC_SlackClaimApprovalService.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>WC Slack Interactivity Guest</label>
+</PermissionSet>

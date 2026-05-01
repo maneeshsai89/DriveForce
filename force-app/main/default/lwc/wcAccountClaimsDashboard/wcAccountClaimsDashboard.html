@@ -1,0 +1,82 @@
+<template>
+    <template lwc:if={embedded}>
+        <template lwc:if={hasAccountContext}>
+            <template lwc:if={isLoading}>
+                <div class="state-wrap state-wrap--loading" aria-busy="true" aria-live="polite">
+                    <lightning-spinner alternative-text="Loading claims metrics" size="large"></lightning-spinner>
+                    <p class="state-wrap-hint">Loading metrics…</p>
+                </div>
+            </template>
+            <template lwc:elseif={loadError}>
+                <div class="state-wrap slds-text-color_error">{loadError}</div>
+            </template>
+            <template lwc:else>
+                <div class="portal-metric-grid">
+                    <div class="portal-tile portal-tile-total">
+                        <div class="portal-tile-label">Total claims</div>
+                        <div class="portal-tile-value">{totalRaised}</div>
+                        <div class="portal-tile-sub">{totalSubtext}</div>
+                    </div>
+                    <div class="portal-tile portal-tile-review">
+                        <div class="portal-tile-label">Under review</div>
+                        <div class="portal-tile-value">{pendingCount}</div>
+                        <div class="portal-tile-sub">{pendingSubtext}</div>
+                    </div>
+                    <div class="portal-tile portal-tile-approved">
+                        <div class="portal-tile-label">Approved</div>
+                        <div class="portal-tile-value">{approvedCount}</div>
+                        <div class="portal-tile-sub">{approvedSubtext}</div>
+                    </div>
+                    <div class="portal-tile portal-tile-rejected">
+                        <div class="portal-tile-label">Rejected</div>
+                        <div class="portal-tile-value">{rejectedCount}</div>
+                        <div class="portal-tile-sub">{rejectedSubtext}</div>
+                    </div>
+                </div>
+            </template>
+        </template>
+        <template lwc:else>
+            <div class="state-wrap slds-text-color_weak">Set Account Id or use on an Account record page.</div>
+        </template>
+    </template>
+    <template lwc:else>
+        <lightning-card title="Claims overview" icon-name="standard:entitlement">
+            <template lwc:if={hasAccountContext}>
+                <template lwc:if={isLoading}>
+                    <div class="state-wrap state-wrap--loading" aria-busy="true" aria-live="polite">
+                        <lightning-spinner alternative-text="Loading claims metrics" size="large"></lightning-spinner>
+                        <p class="state-wrap-hint">Loading metrics…</p>
+                    </div>
+                </template>
+                <template lwc:elseif={loadError}>
+                    <div class="state-wrap slds-text-color_error">{loadError}</div>
+                </template>
+                <template lwc:else>
+                    <div class="metric-grid">
+                        <div class="metric-tile tile-total">
+                            <div class="metric-label">Claims raised</div>
+                            <div class="metric-value">{totalRaised}</div>
+                        </div>
+                        <div class="metric-tile tile-pending">
+                            <div class="metric-label">Pending</div>
+                            <div class="metric-value">{pendingCount}</div>
+                        </div>
+                        <div class="metric-tile tile-approved">
+                            <div class="metric-label">Approved</div>
+                            <div class="metric-value">{approvedCount}</div>
+                        </div>
+                        <div class="metric-tile tile-rejected">
+                            <div class="metric-label">Rejected</div>
+                            <div class="metric-value">{rejectedCount}</div>
+                        </div>
+                    </div>
+                </template>
+            </template>
+            <template lwc:else>
+                <div class="state-wrap slds-text-color_weak">
+                    Set Account Id (record page) or the Account Id property (App Builder).
+                </div>
+            </template>
+        </lightning-card>
+    </template>
+</template>

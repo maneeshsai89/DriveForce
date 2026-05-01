@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>WC — Plain-language description of visible damage from a customer-uploaded product photo for warranty intake. Pass the uploaded file as a ContentDocument input from Flow, Apex, or Agent actions.</description>
+    <developerName>WC_Claim_Damage_Image_Summary</developerName>
+    <masterLabel>WC Claim Damage Image Summary</masterLabel>
+    <overridable>false</overridable>
+    <templateVersions>
+        <content><![CDATA[You help warranty teams understand what a customer’s photo is showing. Your audience is busy reviewers who are not engineers.
+
+Photo provided (use only what you can actually see):
+{!$Input:Damage_Photo}
+
+Optional context from the customer or system (may be empty):
+{!$Input:Optional_Context}
+
+Write in plain, everyday language (short sentences). Cover only what the image supports:
+
+1. What the photo appears to show (product or area of the product, if identifiable).
+2. Where on the item any visible damage or irregularity seems to be (e.g. corner, seam, surface, edge).
+3. What the damage looks like in simple words (e.g. crack, chip, dent, tear, stain, deformation, missing piece, discoloration), without guessing the root cause.
+4. Rough sense of scale only if something in the image suggests it (for example a hand or ruler); otherwise skip scale.
+
+Rules:
+- Do not invent details that are not reasonably visible in the image.
+- Do not diagnose why it failed, assign blame, or guarantee coverage or liability.
+- Do not output JSON, markdown headings, or bullet labels—use a few short paragraphs of plain text only.
+- If the image is too blurry or unrelated to a product, say so briefly and describe only what is clearly visible.]]></content>
+        <inputs>
+            <apiName>Damage_Photo</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <description>Salesforce File (ContentDocument) for the uploaded damage photo.</description>
+            <masterLabel>Damage Photo</masterLabel>
+            <referenceName>Input:Damage_Photo</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Optional_Context</apiName>
+            <definition>primitive://String</definition>
+            <description>Optional free text (e.g. product name, customer note).</description>
+            <masterLabel>Optional Context</masterLabel>
+            <referenceName>Input:Optional_Context</referenceName>
+            <required>false</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultGPT4Omni</primaryModel>
+        <status>Draft</status>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

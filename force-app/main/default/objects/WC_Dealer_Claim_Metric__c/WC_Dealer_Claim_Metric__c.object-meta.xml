@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Automated snapshot of per-dealer claim KPIs (rolling windows, rates, average amounts). Populated by WC_DealerMetricsBatch for Slack and Data Cloud CRM ingestion.</description>
+    <label>WC Dealer Claim Metric</label>
+    <nameField>
+        <displayFormat>DCM-{00000000}</displayFormat>
+        <label>Metric Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>WC Dealer Claim Metrics</pluralLabel>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Allows custom permissions for Agentforce Agent : Inbound_Voice_Service_Agent&apos;s agent user : inbound_voice_service_agent@00dbm00000fmdub269281061.ext.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Inbound_Voice_Service_Agent1796926062 Permissions</label>
+    <license>Einstein Agent</license>
+</PermissionSet>

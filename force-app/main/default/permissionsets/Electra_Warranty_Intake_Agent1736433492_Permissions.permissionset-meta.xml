@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Allows custom permissions for Agentforce Agent : Electra_Warranty_Intake_Agent&apos;s agent user : electra_warranty_intake_agent@00dbm00000fmdub1566296651.ext.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Electra_Warranty_Intake_Agent1736433492 Permissions</label>
+    <license>Einstein Agent</license>
+</PermissionSet>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Creates a Claim and ClaimItem after VIN lookup and issue details (part Product2 Id, fault, mileage, labour). Uses WC_Create_Claim_Intake_Flow.</description>
+    <developerName>CreateWarrantyClaim</developerName>
+    <invocationTarget>WC_Create_Claim_Intake_Flow</invocationTarget>
+    <invocationTargetType>flow</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+    <localDeveloperName>CreateWarrantyClaim</localDeveloperName>
+    <masterLabel>Create Warranty Claim</masterLabel>
+</GenAiFunction>

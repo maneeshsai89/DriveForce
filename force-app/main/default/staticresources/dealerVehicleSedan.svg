@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Sedan illustration</title>
+  <desc id="desc">A stylized sedan vehicle image for claim cards.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#173a67"/>
+      <stop offset="100%" stop-color="#2b6cb0"/>
+    </linearGradient>
+    <linearGradient id="car" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#47a3ff"/>
+      <stop offset="100%" stop-color="#1b5fa7"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <circle cx="100" cy="62" r="2.2" fill="#fff" opacity="0.75"/>
+  <circle cx="190" cy="44" r="1.8" fill="#fff" opacity="0.6"/>
+  <circle cx="550" cy="70" r="2.1" fill="#fff" opacity="0.7"/>
+  <rect x="0" y="268" width="640" height="92" fill="#0f2f57"/>
+  <g transform="translate(110 146)">
+    <rect x="0" y="56" width="430" height="74" rx="26" fill="url(#car)"/>
+    <path d="M74 56h216c24 0 48 12 64 30H40c8-18 20-30 34-30z" fill="#5db4ff"/>
+    <rect x="100" y="25" width="154" height="45" rx="14" fill="#d8ecff"/>
+    <rect x="264" y="31" width="74" height="39" rx="12" fill="#c4e1ff"/>
+    <circle cx="94" cy="140" r="26" fill="#0e2036"/>
+    <circle cx="338" cy="140" r="26" fill="#0e2036"/>
+    <circle cx="94" cy="140" r="11" fill="#edf5ff"/>
+    <circle cx="338" cy="140" r="11" fill="#edf5ff"/>
+  </g>
+</svg>

@@ -1,0 +1,22 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "flowMetadata" : {
+      "title" : "Flow Metadata",
+      "description" : "The flow metadata that you want to modify.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "userPrompt" : {
+      "title" : "User Prompt",
+      "description" : "The user prompt that describes the changes to be made to the flow. Extract the prompt from the user’s last message in the conversation.",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "This is the value for the userPrompt parameter. Extract the EXACT text of what the user just said from the conversation (their latest message) describing what changes to make to the flow. Set the userPrompt parameter to this extracted text. Don't omit the input or remove any words from the original input received from the user. For example, if the user input is 'Add an email notification' then set userPrompt to 'Add an email notification'. DO NOT modify or paraphrase the user's message - pass it exactly as they said it. DO NOT ask the user for more details - use whatever they said in their message.",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

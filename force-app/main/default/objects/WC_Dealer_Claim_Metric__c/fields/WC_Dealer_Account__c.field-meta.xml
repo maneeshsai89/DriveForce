@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WC_Dealer_Account__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Dealer (Account) for this metric row.</description>
+    <externalId>false</externalId>
+    <label>Dealer Account</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>WC Dealer Claim Metrics</relationshipLabel>
+    <relationshipName>WC_Dealer_Claim_Metrics</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

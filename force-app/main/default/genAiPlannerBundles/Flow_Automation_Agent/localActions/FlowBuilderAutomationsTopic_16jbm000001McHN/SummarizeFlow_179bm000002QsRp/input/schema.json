@@ -1,0 +1,13 @@
+{
+  "properties" : {
+    "flowMetadata" : {
+      "title" : "Flow Metadata",
+      "description" : "The flow Metadata you want to summarize.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

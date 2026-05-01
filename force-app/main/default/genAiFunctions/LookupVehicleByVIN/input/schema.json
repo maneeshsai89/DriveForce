@@ -1,0 +1,14 @@
+{
+  "required" : [ "VINInput" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "VINInput" : {
+      "title" : "VINInput",
+      "description" : "17 digit Vehicle Identification Number",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

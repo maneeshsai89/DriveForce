@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WC_Fault_Keywords__c</fullName>
+    <description>WC — Rich keywords for agents / Einstein / UI. Part suggestion uses Prompt Builder + Knowledge (see WC_SuggestPartAction); not used for catalogue text search.</description>
+    <label>WC Fault Keywords</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>4</visibleLines>
+</CustomField>

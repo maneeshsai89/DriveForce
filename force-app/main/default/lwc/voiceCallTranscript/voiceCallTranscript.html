@@ -1,0 +1,121 @@
+<template>
+    <article class="vct-shell">
+        <header class="vct-header">
+            <div class="vct-header-main">
+                <div class="vct-header-kicker">
+                    <span class="vct-pulse" aria-hidden="true"></span>
+                    Voice call transcript
+                </div>
+                <h1 class="vct-title">Conversation</h1>
+                <p class="vct-subtitle">{headerSubtitle}</p>
+            </div>
+            <div class="vct-header-actions">
+                <button type="button" class="vct-icon-btn" onclick={handleRefresh} title="Refresh" aria-label="Refresh transcript">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 4v6h-6M1 20v-6h6"/>
+                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                    </svg>
+                </button>
+                <button type="button" class="vct-icon-btn" onclick={handleCopy} title="Copy transcript" aria-label="Copy transcript">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2"/>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <template if:true={isLoading}>
+            <div class="vct-state">
+                <lightning-spinner alternative-text="Loading transcript" size="medium"></lightning-spinner>
+            </div>
+        </template>
+
+        <template if:true={errorMessage}>
+            <div class="vct-error">{errorMessage}</div>
+        </template>
+
+        <template if:true={showRecordingSection}>
+            <section class="vct-recordings" aria-label="Call recordings">
+                <h2 class="vct-section-title">Recordings</h2>
+                <div class="vct-recording-grid">
+                    <template for:each={recordingCards} for:item="rec">
+                        <div key={rec.key} class="vct-recording-card">
+                            <div class="vct-recording-head">
+                                <span class="vct-recording-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8">
+                                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                                        <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/>
+                                    </svg>
+                                </span>
+                                <div>
+                                    <div class="vct-recording-title">{rec.title}</div>
+                                    <div class="vct-recording-meta">{rec.subtitle}</div>
+                                </div>
+                            </div>
+                            <template if:true={rec.audioSrc}>
+                                <audio class="vct-audio" controls preload="metadata" src={rec.audioSrc}>
+                                    Your browser does not support audio playback.
+                                </audio>
+                            </template>
+                            <template if:true={rec.fileUrl}>
+                                <a class="vct-file-link" href={rec.fileUrl} target="_blank" rel="noopener noreferrer">Open in Files</a>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+            </section>
+        </template>
+
+        <template if:true={isEmpty}>
+            <div class="vct-state vct-state--muted">
+                <p>No transcript lines are available for this call yet.</p>
+                <template if:false={hasRecordings}>
+                    <p class="vct-hint">When the conversation is processed, entries will appear here. Recordings show above when linked on VoiceCall.</p>
+                </template>
+            </div>
+        </template>
+
+        <template if:true={hasEntries}>
+            <section class="vct-transcript" aria-label="Transcript">
+                <div class="vct-toolbar">
+                    <lightning-input
+                        type="search"
+                        label="Search transcript"
+                        variant="label-hidden"
+                        placeholder="Search speakers or text…"
+                        value={searchTerm}
+                        onchange={handleSearch}
+                    ></lightning-input>
+                </div>
+
+                <div class="vct-stream">
+                    <template for:each={filteredEntries} for:item="entry">
+                        <div key={entry.id} class={entry.rowClass}>
+                            <div class="vct-avatar" aria-hidden="true">{entry.initials}</div>
+                            <div class={entry.bubbleClass}>
+                                <div class="vct-bubble-top">
+                                    <span class="vct-speaker">{entry.speaker}</span>
+                                    <span class="vct-role">{entry.roleLabel}</span>
+                                    <span class="vct-time">
+                                        <lightning-formatted-date-time
+                                            value={entry.timestamp}
+                                            hour="2-digit"
+                                            minute="2-digit"
+                                            second="2-digit"
+                                        ></lightning-formatted-date-time>
+                                    </span>
+                                </div>
+                                <div class="vct-text">{entry.text}</div>
+                            </div>
+                        </div>
+                    </template>
+
+                    <template if:true={noSearchResults}>
+                        <div class="vct-state vct-state--muted">No lines match your search.</div>
+                    </template>
+                </div>
+            </section>
+        </template>
+    </article>
+</template>

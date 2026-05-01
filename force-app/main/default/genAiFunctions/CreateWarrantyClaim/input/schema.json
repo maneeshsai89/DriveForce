@@ -1,0 +1,77 @@
+{
+  "required" : [ "dealerAccountId", "vehicleId", "productId", "faultDescription", "vin", "submissionChannel" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "dealerAccountId" : {
+      "title" : "dealerAccountId",
+      "description" : "Account Id of the dealer (Vehicle CurrentOwnerId from VIN lookup).",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "vehicleId" : {
+      "title" : "vehicleId",
+      "description" : "Salesforce Vehicle Id from VIN lookup.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "productId" : {
+      "title" : "productId",
+      "description" : "Product2 Id for the claimed part (line item).",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "faultDescription" : {
+      "title" : "faultDescription",
+      "description" : "Dealer description of the fault or symptom.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "vin" : {
+      "title" : "vin",
+      "description" : "17-character VIN; must match the vehicle record.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "mileageAtClaim" : {
+      "title" : "mileageAtClaim",
+      "description" : "Odometer reading at claim time (optional).",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "labourHours" : {
+      "title" : "labourHours",
+      "description" : "Estimated labour hours for the repair line (optional).",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "estimatedAmount" : {
+      "title" : "estimatedAmount",
+      "description" : "Estimated currency amount (optional).",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "submissionChannel" : {
+      "title" : "submissionChannel",
+      "description" : "WhatsApp, Web, or Portal.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "aiRiskScore" : {
+      "title" : "aiRiskScore",
+      "description" : "Optional AI risk or confidence score.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}
